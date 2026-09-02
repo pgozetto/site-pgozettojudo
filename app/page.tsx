@@ -17,7 +17,6 @@ import {
 
 const navItems = [
   ['Quem sou', '#sobre'],
-  ['O futuro', '#futuro'],
   ['Produtos', '#produtos'],
   ['Parcerias', '#parcerias'],
 ];
@@ -48,7 +47,7 @@ export default function Home() {
         <div className="hero-copy">
           <p className="eyebrow"><span /> ATLETA · CRIADOR · JUDOCA</p>
           <h1>VIVO O<br />JUDÔ.<br /><em>CONTO</em><br />ESSA HISTÓRIA.</h1>
-          <p className="hero-text">Sou Pedro Gozetto. Transformo a vivência no tatame em conteúdo para inspirar quem acredita no poder do esporte.</p>
+          <p className="hero-text">Olá, me chamo Pedro Gozetto, sou um judoca sub18 que compete e cria conteúdos para vocês!</p>
           <div className="hero-actions"><a className="button button-primary" href="#sobre">Conheça minha jornada <ArrowDownRight size={17} /></a><a className="text-action" href="#produtos">Ver projetos <ArrowUpRight size={16} /></a></div>
         </div>
         <div className="portrait-wrap" aria-label="Espaço reservado para foto de Pedro Gozetto">
@@ -68,24 +67,18 @@ export default function Home() {
         <div className="photo-slot wide-photo" aria-label="Espaço reservado para uma imagem de treino ou competição"><Camera size={24} strokeWidth={1.25} /><span>ESPAÇO PARA FOTO DE TREINO, SHIAI OU TATAME</span></div>
       </section>
 
-      <section className="future section" id="futuro">
-        <div className="section-label light">02 / OLHANDO PARA FRENTE</div>
-        <div className="future-grid"><h2>CONSTRUIR<br />ALGO QUE<br /><span>FIQUE.</span></h2><div className="future-copy"><p>Quero levar o judô para mais pessoas, criar uma comunidade que se apoia e desenvolver projetos que façam diferença na rotina de quem ama o esporte.</p><ul><li><span>01</span> Evoluir como atleta e pessoa</li><li><span>02</span> Inspirar a nova geração</li><li><span>03</span> Criar impacto fora do tatame</li></ul></div></div>
-        <div className="future-mark">柔道</div>
-      </section>
-
       <section className="products section" id="produtos">
-        <div className="products-heading"><div className="section-label">03 / O QUE ESTOU CRIANDO</div><h2>PROJETOS<br />COM <span>PROPÓSITO.</span></h2></div>
+        <div className="products-heading"><div className="section-label">02 / O QUE ESTOU CRIANDO</div><h2>PROJETOS<br />COM <span>PROPÓSITO.</span></h2></div>
         <div className="product-list">{products.map(({ number, title, text, icon: Icon }) => <article className="product-card" key={number}><div className="card-top"><span>{number}</span><Icon size={22} strokeWidth={1.5} /></div><h3>{title}</h3><p>{text}</p><a href="#contato" aria-label={`Saiba mais sobre ${title}`}><ArrowUpRight size={19} /></a></article>)}</div>
       </section>
 
       <section className="partnerships section" id="parcerias">
         <div className="partnership-image photo-slot" aria-label="Espaço reservado para foto de parceria"><Handshake size={28} strokeWidth={1.25} /><span>ESPAÇO PARA FOTO<br />DE PARCERIA</span></div>
-        <div className="partnership-copy"><div className="section-label">04 / PARCERIAS</div><h2>VAMOS CRIAR<br /><span>JUNTOS?</span></h2><p>Estou aberto a marcas e projetos que compartilham os valores do judô: disciplina, respeito, evolução e comunidade.</p><a className="button button-dark" href="mailto:contato@pedrogozetto.com">Falar sobre uma parceria <ArrowUpRight size={17} /></a></div>
+        <div className="partnership-copy"><div className="section-label">03 / PARCERIAS</div><h2>VAMOS CRIAR<br /><span>JUNTOS?</span></h2><p>Estou aberto a marcas e projetos que compartilham os valores do judô: disciplina, respeito, evolução e comunidade.</p><a className="button button-dark" href="mailto:pedro@gozetto.com.br">Falar sobre uma parceria <ArrowUpRight size={17} /></a></div>
       </section>
 
       <section className="contact" id="contato">
-        <p className="eyebrow"><span /> VAMOS NOS CONECTAR</p><h2>UM IPPON COMEÇA<br />COM O <em>PRIMEIRO PASSO.</em></h2><a className="contact-email" href="mailto:contato@pedrogozetto.com">contato@pedrogozetto.com <ArrowUpRight size={24} /></a>
+        <p className="eyebrow"><span /> VAMOS NOS CONECTAR</p><h2>UM IPPON COMEÇA<br />COM O <em>PRIMEIRO PASSO.</em></h2><a className="contact-email" href="mailto:pedro@gozetto.com.br">pedro@gozetto.com.br <ArrowUpRight size={24} /></a>
         <div className="contact-bottom"><a href="#inicio" className="brand inverted"><span>PG</span><small>JUDÔ</small></a><div><MapPin size={15} /> Brasil</div><a href="https://instagram.com" target="_blank" rel="noreferrer"><AtSign size={16} /> Instagram</a><a href="#inicio" className="back-top">Voltar ao topo <ChevronDown size={16} /></a></div>
       </section>
     </main>
