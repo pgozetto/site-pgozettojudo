@@ -6,7 +6,6 @@ import {
   Camera,
   ChevronDown,
   CirclePlay,
-  Handshake,
   MapPin,
   Package,
   Sparkles,
@@ -50,9 +49,9 @@ export default function Home() {
           <p className="hero-text">Olá, me chamo Pedro Gozetto, sou um judoca sub18 que compete e cria conteúdos para vocês!</p>
           <div className="hero-actions"><a className="button button-primary" href="#sobre">Conheça minha jornada <ArrowDownRight size={17} /></a><a className="text-action" href="#produtos">Ver projetos <ArrowUpRight size={16} /></a></div>
         </div>
-        <div className="portrait-wrap" aria-label="Espaço reservado para foto de Pedro Gozetto">
+        <div className="portrait-wrap">
           <div className="portrait-ring ring-one" /><div className="portrait-ring ring-two" />
-          <div className="portrait-placeholder"><Camera size={32} strokeWidth={1.25} /><span>SUA FOTO<br />AQUI</span></div>
+          <img className="portrait-photo" src="/img1.jpg" alt="Pedro Gozetto ajustando a faixa de judô" />
           <div className="portrait-caption"><span>JUDOCA</span><strong>EM<br />MOVIMENTO</strong></div><div className="blue-orb" />
         </div>
       </section>
@@ -64,7 +63,7 @@ export default function Home() {
       <section className="about section" id="sobre">
         <div className="section-label">01 / QUEM SOU EU</div>
         <div className="about-main"><h2>MAIS QUE<br />UM ESPORTE.<br /><span>UM CAMINHO.</span></h2><div className="about-note"><BadgeCheck size={22} /><p>Meu objetivo é mostrar o judô de um jeito real: os aprendizados, as vitórias, os desafios e tudo que o tatame ensina para a vida.</p></div></div>
-        <div className="photo-slot wide-photo" aria-label="Espaço reservado para uma imagem de treino ou competição"><Camera size={24} strokeWidth={1.25} /><span>ESPAÇO PARA FOTO DE TREINO, SHIAI OU TATAME</span></div>
+        <img className="section-photo wide-photo" src="/img2.png" alt="Pedro Gozetto em competição de judô" />
       </section>
 
       <section className="products section" id="produtos">
@@ -73,7 +72,7 @@ export default function Home() {
       </section>
 
       <section className="partnerships section" id="parcerias">
-        <div className="partnership-image photo-slot" aria-label="Espaço reservado para foto de parceria"><Handshake size={28} strokeWidth={1.25} /><span>ESPAÇO PARA FOTO<br />DE PARCERIA</span></div>
+        <img className="section-photo partnership-image" src="/img3.jpg" alt="Pedro Gozetto em uma atividade de judô com a comunidade" />
         <div className="partnership-copy"><div className="section-label">03 / PARCERIAS</div><h2>VAMOS CRIAR<br /><span>JUNTOS?</span></h2><p>Estou aberto a marcas e projetos que compartilham os valores do judô: disciplina, respeito, evolução e comunidade.</p><a className="button button-dark" href="mailto:pedro@gozetto.com.br">Falar sobre uma parceria <ArrowUpRight size={17} /></a></div>
       </section>
 
