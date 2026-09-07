@@ -5,6 +5,10 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://pedro-gozetto-judo.pgozetto.chatgpt.site'),
   title: 'Pedro Gozetto | Judô, conteúdo e propósito',
   description: 'Site oficial de Pedro Gozetto, judoca e criador de conteúdo sobre judô.',
+  icons: {
+    icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
+    shortcut: '/favicon.svg',
+  },
   openGraph: {
     title: 'Pedro Gozetto | Judô, conteúdo e propósito',
     description: 'Judô, conteúdo e propósito.',
