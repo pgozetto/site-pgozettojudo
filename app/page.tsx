@@ -5,7 +5,6 @@ import {
   ArrowDownRight,
   ArrowUpRight,
   AtSign,
-  Award,
   BookOpenCheck,
   ChevronUp,
   CirclePlay,
@@ -33,14 +32,13 @@ const contentProjects = [
 ];
 
 const medals = [
-  ['SUA MEDALHA', 'Competição · Ano'],
-  ['SUA CONQUISTA', 'Torneio · Categoria'],
-  ['SEU RESULTADO', 'Evento · Ano'],
+  { title: 'Terceiro Lugar Inter Regional', detail: 'Ano: 2023', emoji: '🥉' },
+  { title: 'Segundo Lugar Inter Regional', detail: 'Ano: 2024', emoji: '🥈' },
 ];
 
 const certificates = [
-  ['CERTIFICADO 01', 'Curso ou formação'],
-  ['CERTIFICADO 02', 'Projeto ou evento'],
+  { title: 'Faixa Marrom', detail: 'Certificado de graduação · 2025', image: '/certificado-faixa-marrom.png' },
+  { title: 'Curso Shotyugueiko', detail: 'São Carlos · 2026', image: '/certificado-shotyugueiko.png' },
 ];
 
 export default function Home() {
@@ -94,7 +92,7 @@ export default function Home() {
         <div className="hero-orbit orbit-one parallax-layer" data-parallax="0.06" aria-hidden="true" /><div className="hero-orbit orbit-two parallax-layer" data-parallax="-0.04" aria-hidden="true" />
         <div className="hero-content reveal is-visible">
           <p className="eyebrow"><span /> JUDOCA · ATLETA · CRIADOR</p>
-          <h1 className="typewriter" aria-label="Seja Bem Vindo! @pgozettojudo por aqui!"><span>Seja Bem<br />Vindo! </span><strong>@pgozettojudo</strong><span><br />por aqui!</span></h1>
+          <h1 className="hero-welcome"><span>Seja Bem<br />Vindo! </span><strong>@pgozettojudo</strong><span><br />por aqui!</span></h1>
           <p className="hero-text">Conteúdo, rotina e a realidade de quem vive o judô dentro e fora do tatame.</p>
           <div className="hero-actions"><a className="button button-primary" href="#sobre">Conheça minha jornada <ArrowDownRight size={17} /></a><a className="social-link" href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram"><AtSign size={17} /></a></div>
         </div>
@@ -126,8 +124,8 @@ export default function Home() {
         <div className="authority-orbit parallax-layer" data-parallax="0.07" aria-hidden="true" /><div className="judo-icon icon-authority parallax-layer" data-parallax="-0.03" aria-hidden="true"><Trophy size={28} /></div>
         <div className="authority-heading reveal"><p className="eyebrow"><span /> 02 / AUTORIDADE</p><h2>CONQUISTAS QUE<br /><em>CONTAM MINHA HISTÓRIA.</em></h2><p>Um espaço para registrar cada medalha, resultado e certificado que constrói minha trajetória no judô.</p></div>
         <div className="authority-grid">
-          <article className="medal-panel reveal"><div className="panel-top"><Medal size={23} /><span>MEDALHAS E CONQUISTAS</span></div>{medals.map(([title, detail], index) => <div className="medal-row" key={title}><b>0{index + 1}</b><div><strong>{title}</strong><span>{detail}</span></div><Award size={18} /></div>)}</article>
-          <article className="certificate-panel reveal"><div className="panel-top"><BookOpenCheck size={23} /><span>CERTIFICADOS</span></div><div className="certificate-list">{certificates.map(([title, detail]) => <div className="certificate-card" key={title}><BookOpenCheck size={22} /><strong>{title}</strong><span>{detail}</span><small>ADICIONE AQUI</small></div>)}</div></article>
+          <article className="medal-panel reveal"><div className="panel-top"><Medal size={23} /><span>MEDALHAS E CONQUISTAS</span></div>{medals.map(({ title, detail, emoji }, index) => <div className="medal-row" key={title}><b>0{index + 1}</b><div><strong>{emoji} {title}</strong><span>{detail}</span></div><span className="medal-emoji" aria-hidden="true">{emoji}</span></div>)}</article>
+          <article className="certificate-panel reveal"><div className="panel-top"><BookOpenCheck size={23} /><span>CERTIFICADOS</span></div><div className="certificate-list">{certificates.map(({ title, detail, image }) => <article className="certificate-card certificate-document" key={title}><div className="certificate-copy"><BookOpenCheck size={21} /><strong>{title}</strong><span>{detail}</span></div><img src={image} alt={`Certificado de ${title} de Pedro Gozetto`} /></article>)}</div></article>
         </div>
       </section>
 

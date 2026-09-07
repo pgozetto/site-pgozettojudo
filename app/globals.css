@@ -71,8 +71,8 @@
 @media (prefers-reduced-motion: reduce) { .parallax-layer { transform: none !important; transition: none; } .hero-photo-frame::before, .section-photo-card::before, .partnership-image::before, .medal-card::before, .certificate-card::before, .project-card::before, .signature-item::before, .hero::after, .about::before, .authority::before, .projects::before, .partnerships::before, .contact::after, .section-texture, .judo-glyph, .judo-icon { animation: none; } }
 
 /* Abertura e cena de respeito no tatame. */
-.hero h1.typewriter { width: fit-content; max-width: 100%; overflow: hidden; color: #fff; text-transform: none; white-space: nowrap; border-right: 3px solid var(--blue-soft); animation: type-reveal 3.4s steps(33, end) .35s both, caret-blink .75s step-end 5; }
-.hero h1.typewriter strong { color: #5bd1ff; font-weight: 900; text-shadow: 0 0 17px rgba(44, 187, 255, .58), 0 0 42px rgba(44, 187, 255, .24); background: linear-gradient(90deg, #8ee6ff, #159eea 48%, #c0f0ff); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-size: 220% auto; animation: handle-sweep 3.6s linear infinite 3.8s; }
+.hero h1.hero-welcome { color: #fff; text-transform: none; }
+.hero h1.hero-welcome strong { color: #5bd1ff; font-weight: 900; text-shadow: 0 0 17px rgba(44, 187, 255, .58), 0 0 42px rgba(44, 187, 255, .24); }
 .section-photo-card img { filter: saturate(1.02) contrast(1.06) brightness(1.01); mix-blend-mode: normal; }
 .section-photo-card { mask-image: none; background: #061d32; box-shadow: 0 20px 55px rgba(0, 0, 0, .34); }
 .section-photo-card::after { background: linear-gradient(180deg, rgba(3, 23, 41, .02) 48%, rgba(3, 23, 41, .72)); }
@@ -81,10 +81,17 @@
 .about .section-photo-card img { width: 100%; height: 100%; object-fit: contain; object-position: center; transform: none !important; }
 .about .section-photo-card::before { display: none; }
 
-@keyframes type-reveal { from { max-width: 0; } to { max-width: 100%; } }
-@keyframes caret-blink { 50% { border-color: transparent; } }
-@keyframes handle-sweep { from { background-position: 0% center; } to { background-position: 220% center; } }
+@media (max-width: 760px) { .hero h1.hero-welcome { font-size: clamp(39px, 11.4vw, 58px); } .hero h1.hero-welcome strong { display: inline-block; } .about .section-photo-card { width: min(100%, 330px); height: 440px; } }
 
-@media (max-width: 760px) { .hero h1.typewriter { font-size: clamp(39px, 11.4vw, 58px); white-space: normal; border-right: 0; animation: type-reveal-mobile 2.7s steps(25, end) .25s both; } .hero h1.typewriter strong { display: inline-block; } .about .section-photo-card { width: min(100%, 330px); height: 440px; } }
-@media (prefers-reduced-motion: reduce) { .hero h1.typewriter { max-width: none; border: 0; animation: none; } .hero h1.typewriter strong { animation: none; } }
+.medal-emoji { display: grid; place-items: center; width: 2rem; height: 2rem; border: 1px solid rgba(88, 205, 255, .3); border-radius: 50%; background: rgba(32, 150, 226, .1); font-size: 1.05rem; }
+.certificate-list { gap: 16px; }
+.certificate-card.certificate-document { position: relative; display: grid; grid-template-columns: minmax(106px, .62fr) minmax(160px, 1.38fr); gap: 13px; align-items: center; min-height: 126px; padding: 11px; overflow: hidden; border-color: rgba(108, 205, 255, .17); background: rgba(3, 23, 41, .55); }
+.certificate-document::before { display: none; }
+.certificate-copy { display: grid; gap: 6px; align-content: center; }
+.certificate-copy svg { grid-row: auto; color: var(--blue-soft); }
+.certificate-copy strong { color: #fff; font-size: 13px; line-height: 1.1; }
+.certificate-copy span { color: var(--muted); font-size: 10px; line-height: 1.35; }
+.certificate-document img { width: 100%; height: 102px; object-fit: cover; object-position: center; border: 1px solid rgba(255, 255, 255, .38); border-radius: 4px; background: #fff; box-shadow: 0 8px 18px rgba(0, 0, 0, .25); transition: transform .3s ease, box-shadow .3s ease; }
+.certificate-document:hover img { transform: scale(1.035); box-shadow: 0 12px 25px rgba(0, 0, 0, .35); }
+@media (max-width: 680px) { .medal-row { grid-template-columns: 30px 1fr 36px; } .certificate-card.certificate-document { grid-template-columns: 1fr; } .certificate-document img { height: auto; max-height: 185px; object-fit: contain; } }
 
