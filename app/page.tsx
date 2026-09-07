@@ -43,6 +43,8 @@ const certificates = [
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeCertificate, setActiveCertificate] = useState<(typeof certificates)[number] | null>(null);
+  const [certificateClosing, setCertificateClosing] = useState(false);
 
   useEffect(() => {
     const updateParallax = () => {
@@ -72,6 +74,26 @@ export default function Home() {
   }, []);
 
   const closeMenu = () => setMenuOpen(false);
+  const openCertificate = (certificate: (typeof certificates)[number]) => {
+    setCertificateClosing(false);
+    setActiveCertificate(certificate);
+  };
+  const closeCertificate = () => {
+    setCertificateClosing(true);
+    window.setTimeout(() => {
+      setActiveCertificate(null);
+      setCertificateClosing(false);
+    }, 240);
+  };
+
+  useEffect(() => {
+    if (!activeCertificate) return;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') closeCertificate();
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [activeCertificate]);
 
   return (
     <main>
@@ -125,7 +147,7 @@ export default function Home() {
         <div className="authority-heading reveal"><p className="eyebrow"><span /> 02 / AUTORIDADE</p><h2>CONQUISTAS QUE<br /><em>CONTAM MINHA HISTÓRIA.</em></h2><p>Um espaço para registrar cada medalha, resultado e certificado que constrói minha trajetória no judô.</p></div>
         <div className="authority-grid">
           <article className="medal-panel reveal"><div className="panel-top"><Medal size={23} /><span>MEDALHAS E CONQUISTAS</span></div>{medals.map(({ title, detail, emoji }, index) => <div className="medal-row" key={title}><b>0{index + 1}</b><div><strong>{emoji} {title}</strong><span>{detail}</span></div><span className="medal-emoji" aria-hidden="true">{emoji}</span></div>)}</article>
-          <article className="certificate-panel reveal"><div className="panel-top"><BookOpenCheck size={23} /><span>CERTIFICADOS</span></div><div className="certificate-list">{certificates.map(({ title, detail, image }) => <article className="certificate-card certificate-document" key={title}><div className="certificate-copy"><BookOpenCheck size={21} /><strong>{title}</strong><span>{detail}</span></div><img src={image} alt={`Certificado de ${title} de Pedro Gozetto`} /></article>)}</div></article>
+          <article className="certificate-panel reveal"><div className="panel-top"><BookOpenCheck size={23} /><span>CERTIFICADOS</span></div><div className="certificate-list">{certificates.map((certificate) => <button className="certificate-card certificate-document" type="button" key={certificate.title} onClick={() => openCertificate(certificate)} aria-label={`Ampliar certificado de ${certificate.title}`}><div className="certificate-copy"><BookOpenCheck size={21} /><strong>{certificate.title}</strong><span>{certificate.detail}</span><small>CLIQUE PARA AMPLIAR</small></div><img src={certificate.image} alt={`Certificado de ${certificate.title} de Pedro Gozetto`} /></button>)}</div></article>
         </div>
       </section>
 
@@ -146,6 +168,8 @@ export default function Home() {
         <div className="contact-content reveal"><p className="eyebrow"><span /> VAMOS NOS CONECTAR</p><h2>O PRÓXIMO PASSO<br />COMEÇA <em>AGORA.</em></h2><a className="contact-email" href="mailto:pedro@gozetto.com.br">pedro@gozetto.com.br <ArrowUpRight size={24} /></a></div>
         <div className="contact-bottom"><a href="#inicio" className="brand"><span>PG</span><small>JUDÔ</small></a><div><MapPin size={15} /> Brasil</div><a href="https://instagram.com" target="_blank" rel="noreferrer"><AtSign size={16} /> Instagram</a><a href="#inicio" className="back-top">Voltar ao topo <ChevronUp size={16} /></a></div>
       </section>
+
+      {activeCertificate && <div className={certificateClosing ? 'certificate-modal is-closing' : 'certificate-modal'} role="dialog" aria-modal="true" aria-label={`Visualização ampliada: ${activeCertificate.title}`} onClick={(event) => event.currentTarget === event.target && closeCertificate()}><div className="certificate-modal-card"><button className="certificate-close" type="button" onClick={closeCertificate} aria-label="Fechar certificado"><X size={22} /></button><div className="certificate-modal-title"><BookOpenCheck size={19} /><span>{activeCertificate.title}</span></div><img src={activeCertificate.image} alt={`Visualização ampliada do certificado de ${activeCertificate.title} de Pedro Gozetto`} /></div></div>}
     </main>
   );
 }
