@@ -9,7 +9,6 @@ import {
   BookOpenCheck,
   ChevronUp,
   CirclePlay,
-  Mail,
   MapPin,
   Medal,
   Menu,
@@ -53,6 +52,12 @@ export default function Home() {
       document.documentElement.style.setProperty('--hero-shift', `${Math.max(scroll * -0.05, -55)}px`);
       document.documentElement.style.setProperty('--orb-shift', `${Math.min(scroll * 0.035, 55)}px`);
       document.documentElement.style.setProperty('--image-shift', `${Math.max(scroll * -0.025, -28)}px`);
+      document.querySelectorAll<HTMLElement>('[data-parallax]').forEach((element) => {
+        const rect = element.getBoundingClientRect();
+        const depth = Number(element.dataset.parallax ?? '0.04');
+        const offset = Math.max(-70, Math.min(70, (window.innerHeight / 2 - (rect.top + rect.height / 2)) * depth));
+        element.style.setProperty('--parallax-y', `${Math.round(offset)}px`);
+      });
     };
     const observer = new IntersectionObserver(
       (entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add('is-visible')),
@@ -84,16 +89,16 @@ export default function Home() {
         </button>
       </header>
 
-      <section className="hero" id="inicio">
-        <div className="hero-grid-lines" aria-hidden="true" />
-        <div className="hero-orbit orbit-one" aria-hidden="true" /><div className="hero-orbit orbit-two" aria-hidden="true" />
+      <section className="hero parallax-section" id="inicio">
+        <div className="hero-grid-lines parallax-layer" data-parallax="0.08" aria-hidden="true" />
+        <div className="hero-orbit orbit-one parallax-layer" data-parallax="0.06" aria-hidden="true" /><div className="hero-orbit orbit-two parallax-layer" data-parallax="-0.04" aria-hidden="true" />
         <div className="hero-content reveal is-visible">
           <p className="eyebrow"><span /> JUDOCA · ATLETA · CRIADOR</p>
           <h1>JUDÔ QUE<br /><em>INSPIRA.</em><br />CONTEÚDO<br />QUE MOVE.</h1>
           <p className="hero-text">Olá, me chamo Pedro Gozetto. Sou judoca sub-18, competidor e criador de conteúdo para quem acredita no esporte como caminho.</p>
           <div className="hero-actions"><a className="button button-primary" href="#sobre">Conheça minha jornada <ArrowDownRight size={17} /></a><a className="social-link" href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram"><AtSign size={17} /></a></div>
         </div>
-        <div className="hero-visual reveal is-visible">
+        <div className="hero-visual reveal is-visible parallax-layer" data-parallax="0.035">
           <div className="image-glow" aria-hidden="true" />
           <div className="hero-photo-frame"><img src="/img1.jpg" alt="Pedro Gozetto ajustando a faixa de judô" /></div>
           <div className="hero-photo-label"><span>EM MOVIMENTO</span><strong>JUDÔ<br />COM PROPÓSITO</strong></div>
@@ -105,7 +110,9 @@ export default function Home() {
         <span>DISCIPLINA</span><i /> <span>RESPEITO</span><i /> <span>EVOLUÇÃO</span><i /> <span>COMUNIDADE</span>
       </section>
 
-      <section className="about section" id="sobre">
+      <section className="about section parallax-section" id="sobre">
+        <div className="section-texture parallax-layer" data-parallax="0.05" aria-hidden="true" />
+        <div className="judo-glyph glyph-about parallax-layer" data-parallax="-0.04" aria-hidden="true">柔道</div>
         <div className="section-photo-card reveal"><img src="/img2.png" alt="Pedro Gozetto em competição de judô" /><span>MINHA JORNADA</span></div>
         <div className="about-copy reveal">
           <p className="eyebrow"><span /> 01 / QUEM SOU EU</p>
@@ -115,8 +122,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="authority section" id="autoridade">
-        <div className="authority-orbit" aria-hidden="true" />
+      <section className="authority section parallax-section" id="autoridade">
+        <div className="authority-orbit parallax-layer" data-parallax="0.07" aria-hidden="true" /><div className="judo-icon icon-authority parallax-layer" data-parallax="-0.03" aria-hidden="true"><Trophy size={28} /></div>
         <div className="authority-heading reveal"><p className="eyebrow"><span /> 02 / AUTORIDADE</p><h2>CONQUISTAS QUE<br /><em>CONTAM MINHA HISTÓRIA.</em></h2><p>Um espaço para registrar cada medalha, resultado e certificado que constrói minha trajetória no judô.</p></div>
         <div className="authority-grid">
           <article className="medal-panel reveal"><div className="panel-top"><Medal size={23} /><span>MEDALHAS E CONQUISTAS</span></div>{medals.map(([title, detail], index) => <div className="medal-row" key={title}><b>0{index + 1}</b><div><strong>{title}</strong><span>{detail}</span></div><Award size={18} /></div>)}</article>
@@ -124,18 +131,20 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="projects section" id="projetos">
+      <section className="projects section parallax-section" id="projetos">
+        <div className="section-texture parallax-layer" data-parallax="-0.05" aria-hidden="true" /><div className="judo-glyph glyph-projects parallax-layer" data-parallax="0.04" aria-hidden="true">柔道</div>
         <div className="projects-heading reveal"><p className="eyebrow"><span /> 03 / O QUE ESTOU CRIANDO</p><h2>PROJETOS COM<br /><em>PROPÓSITO.</em></h2></div>
         <div className="project-grid">{contentProjects.map(({ icon: Icon, title, text }, index) => <article className="project-card reveal" key={title}><div className="project-icon"><Icon size={22} /></div><span>0{index + 1}</span><h3>{title}</h3><p>{text}</p><a href="#contato" aria-label={`Saiba mais sobre ${title}`}><ArrowUpRight size={18} /></a></article>)}</div>
       </section>
 
-      <section className="partnerships section" id="parcerias">
+      <section className="partnerships section parallax-section" id="parcerias">
+        <div className="section-texture parallax-layer" data-parallax="0.05" aria-hidden="true" /><div className="judo-icon icon-partnership parallax-layer" data-parallax="-0.04" aria-hidden="true"><Medal size={27} /></div>
         <div className="partnership-image reveal"><img src="/img3.jpg" alt="Pedro Gozetto em uma atividade de judô com a comunidade" /><div className="image-tag"><Target size={17} /> IMPACTO FORA DO TATAME</div></div>
         <div className="partnership-copy reveal"><p className="eyebrow"><span /> 04 / PARCERIAS</p><h2>VAMOS CRIAR<br /><em>JUNTOS?</em></h2><p>Estou aberto a marcas e projetos que compartilham os valores do judô: disciplina, respeito, evolução e comunidade.</p><a className="button button-outline" href="mailto:pedro@gozetto.com.br">Falar sobre uma parceria <ArrowUpRight size={17} /></a></div>
       </section>
 
-      <section className="contact" id="contato">
-        <div className="contact-orb" aria-hidden="true" />
+      <section className="contact parallax-section" id="contato">
+        <div className="contact-orb parallax-layer" data-parallax="0.07" aria-hidden="true" /><div className="judo-glyph glyph-contact parallax-layer" data-parallax="-0.04" aria-hidden="true">柔道</div>
         <div className="contact-content reveal"><p className="eyebrow"><span /> VAMOS NOS CONECTAR</p><h2>O PRÓXIMO PASSO<br />COMEÇA <em>AGORA.</em></h2><a className="contact-email" href="mailto:pedro@gozetto.com.br">pedro@gozetto.com.br <ArrowUpRight size={24} /></a></div>
         <div className="contact-bottom"><a href="#inicio" className="brand"><span>PG</span><small>JUDÔ</small></a><div><MapPin size={15} /> Brasil</div><a href="https://instagram.com" target="_blank" rel="noreferrer"><AtSign size={16} /> Instagram</a><a href="#inicio" className="back-top">Voltar ao topo <ChevronUp size={16} /></a></div>
       </section>
