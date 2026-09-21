@@ -204,3 +204,6 @@
   .button { font-size: 12px; }
 }
 
+/* Mantém o @ e a última linha encostados no fluxo natural do título em telas estreitas. */
+.hero h1.hero-welcome strong { display: inline; }
+

@@ -115,7 +115,7 @@ export default function Home() {
         <div className="hero-grid-lines parallax-layer" data-parallax="0.08" aria-hidden="true" />
         <div className="hero-orbit orbit-one parallax-layer" data-parallax="0.06" aria-hidden="true" /><div className="hero-orbit orbit-two parallax-layer" data-parallax="-0.04" aria-hidden="true" />
         <div className="hero-content reveal is-visible">
-          <h1 className="hero-welcome"><span>Seja Bem<br />Vindo! </span><strong>@pgozettojudo</strong><span><br />por aqui!</span></h1>
+          <h1 className="hero-welcome"><span>Seja Bem<br />Vindo!</span><br /><strong>@pgozettojudo</strong><br /><span>por aqui!</span></h1>
           <p className="hero-text">Conteúdo, rotina e a realidade de quem vive o judô dentro e fora do tatame.</p>
           <div className="hero-social-links" aria-label="Redes sociais de Pedro Gozetto">{socialNetworks.map(({ label, handle, href, icon: Icon }) => <a href={href} key={label} target="_blank" rel="noreferrer" aria-label={`${label}: ${handle}`}><Icon size={18} /><span>{handle}</span></a>)}</div>
         </div>
