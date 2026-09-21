@@ -113,3 +113,94 @@
 @media (max-width: 680px) { .certificate-modal { padding: 15px; } .certificate-modal-card { padding: 14px; } .certificate-modal-card > img { max-height: calc(100vh - 125px); } .certificate-modal-title { margin-bottom: 11px; font-size: 10px; } }
 @media (prefers-reduced-motion: reduce) { .certificate-modal, .certificate-modal-card, .certificate-modal.is-closing, .certificate-modal.is-closing .certificate-modal-card { animation: none; } }
 
+/* Direção visual: preto, marrom e branco, com contraste mais confortável em telas estreitas. */
+:root { --navy: #0c0a08; --navy-2: #17110c; --navy-3: #261b13; --card: #241811; --blue: #9a6848; --blue-soft: #dfc5ae; --text: #fffdf9; --text-2: #e4d8cb; --muted: #b8a89a; --line: rgba(255, 246, 237, .14); --glow: rgba(154, 104, 72, .28); }
+.site-header { justify-content: center; border-bottom-color: rgba(255, 246, 237, .12); background: rgba(12, 10, 8, .82); }
+.site-nav { margin-left: 0; }
+.site-nav a { color: var(--text-2); }
+.site-nav a:hover { color: #fff; }
+.nav-cta { margin-left: 14px; border-color: #ad7855; background: #8b5e42; box-shadow: 0 8px 25px rgba(80, 44, 26, .28); }
+.nav-cta:hover { background: #a9724e; }
+.hero { background: radial-gradient(circle at 81% 40%, rgba(154, 104, 72, .18), transparent 25%), linear-gradient(116deg, #0c0a08 0%, #15100c 62%, #251911 100%); }
+.hero-grid-lines { border-color: rgba(223, 197, 174, .19); }
+.hero-grid-lines::before, .hero-grid-lines::after { border-color: rgba(223, 197, 174, .12); }
+.hero-orbit, .authority-orbit, .contact-orb, .contact-orb::after, .authority-orbit::after { border-color: rgba(223, 197, 174, .18); }
+.hero h1.hero-welcome { margin-top: 0; }
+.hero h1.hero-welcome strong { color: #d9b28f; text-shadow: 0 0 17px rgba(196, 139, 98, .44), 0 0 42px rgba(196, 139, 98, .2); }
+.hero-text, .about-copy > p:not(.eyebrow), .authority-heading > p:not(.eyebrow), .partnership-copy > p:not(.eyebrow) { color: var(--text-2); }
+.hero-social-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.hero-social-links a, .footer-social-links a { display: inline-flex; align-items: center; gap: 8px; color: #fffdf9; font-size: 12px; font-weight: 800; letter-spacing: .02em; transition: color .2s ease, transform .2s ease; }
+.hero-social-links a { padding: 11px 14px; border: 1px solid rgba(223, 197, 174, .35); border-radius: 999px; background: rgba(69, 43, 29, .46); }
+.hero-social-links a:hover, .footer-social-links a:hover { color: #f3d4b9; transform: translateY(-2px); }
+.image-glow { background: rgba(154, 104, 72, .32); }
+.hero-photo-frame, .section-photo-card, .partnership-image { border-color: rgba(223, 197, 174, .26); }
+.hero-photo-frame::after, .section-photo-card::after, .partnership-image::after { background: linear-gradient(180deg, transparent 48%, rgba(12, 10, 8, .7)); box-shadow: inset 0 0 70px rgba(12, 10, 8, .34); }
+.about, .partnerships { background: #15100c; }
+.projects { background: #1a120d; }
+.mini-stats, .medal-panel, .certificate-panel { background: #251912; }
+.about .section-photo-card { background: #17110c; border-color: rgba(223, 197, 174, .36); }
+.about .section-photo-card img { object-fit: cover; object-position: 50% 24%; }
+.partnership-image img { filter: saturate(.85) contrast(1.06) brightness(.9); mix-blend-mode: normal; }
+.button-primary { background: #8b5e42; }
+.button-primary:hover { background: #a9724e; box-shadow: 0 13px 35px rgba(154, 104, 72, .4); }
+.button-outline { border-color: rgba(223, 197, 174, .65); background: rgba(154, 104, 72, .17); }
+.button-outline:hover { border-color: #f1d4b8; background: #8b5e42; }
+.project-card { background: #251912; }
+.project-card:hover { border-color: #b7835e; }
+.project-card a { background: #8b5e42; }
+.project-icon, .medal-emoji { color: #ebcfb4; border-color: rgba(223, 197, 174, .3); background: rgba(154, 104, 72, .16); }
+.contact { background: #17100b; }
+.contact::before { background: radial-gradient(circle at 84% 25%, rgba(154, 104, 72, .27), transparent 25%), linear-gradient(112deg, #0c0a08, #2b1d14); }
+.contact-email { border-color: #d9b28f; }
+.contact-bottom { grid-template-columns: 1fr auto; border-top-color: rgba(255, 246, 237, .18); }
+.footer-social-links { display: flex; flex-wrap: wrap; gap: 20px; }
+.contact .eyebrow, .eyebrow, .panel-top, .medal-row b, .certificate-copy small { color: #e6c4a5; }
+.hero::after, .about::before, .authority::before, .projects::before, .partnerships::before, .contact::after { background-image: radial-gradient(circle at 20% 18%, rgba(223, 197, 174, .18) 0 1px, transparent 1.6px), radial-gradient(circle at 75% 68%, rgba(255, 253, 249, .1) 0 1px, transparent 1.5px), repeating-linear-gradient(90deg, transparent 0 46px, rgba(181, 129, 91, .07) 47px 48px), repeating-linear-gradient(0deg, transparent 0 46px, rgba(181, 129, 91, .05) 47px 48px); }
+.about::before, .projects::before { background-image: radial-gradient(circle at 12% 74%, rgba(181, 129, 91, .18) 0 1px, transparent 1.7px), radial-gradient(circle at 88% 24%, rgba(223, 197, 174, .11) 0 1px, transparent 1.5px), repeating-linear-gradient(135deg, transparent 0 38px, rgba(181, 129, 91, .06) 39px 40px); }
+.authority::before, .partnerships::before { background-image: radial-gradient(circle at 70% 17%, rgba(223, 197, 174, .22) 0 1px, transparent 1.8px), repeating-linear-gradient(90deg, transparent 0 56px, rgba(181, 129, 91, .07) 57px 58px), repeating-linear-gradient(0deg, transparent 0 56px, rgba(181, 129, 91, .055) 57px 58px); }
+.contact::after { background-image: radial-gradient(circle at 68% 30%, rgba(223, 197, 174, .3) 0 1px, transparent 1.8px), repeating-linear-gradient(135deg, transparent 0 44px, rgba(223, 197, 174, .08) 45px 46px); }
+.section-texture { border-color: rgba(223, 197, 174, .15); background: repeating-radial-gradient(ellipse at center, transparent 0 24px, rgba(181, 129, 91, .07) 25px 26px); }
+.judo-glyph { color: rgba(193, 141, 102, .14); }
+.glyph-projects { color: rgba(132, 88, 60, .15); }
+.glyph-contact { color: rgba(236, 210, 188, .14); }
+.certificate-card.certificate-document { border-color: rgba(223, 197, 174, .18); background: rgba(18, 12, 8, .62); }
+.certificate-card.certificate-document:hover { border-color: rgba(223, 197, 174, .64); background: rgba(63, 39, 26, .82); }
+.certificate-modal { background: rgba(7, 5, 4, .86); }
+.certificate-modal-card { border-color: rgba(223, 197, 174, .42); background: #1e140e; box-shadow: 0 28px 90px rgba(0, 0, 0, .65), 0 0 90px rgba(154, 104, 72, .14); }
+.certificate-modal-title { color: #ead0b6; }
+.certificate-close { border-color: rgba(223, 197, 174, .42); background: rgba(30, 20, 14, .88); }
+.certificate-close:hover { background: #8b5e42; }
+
+@media (max-width: 680px) {
+  .site-header { justify-content: flex-end; }
+  .menu-button { position: relative; border-color: rgba(223, 197, 174, .4); }
+  .site-nav { background: #17110c; }
+  .site-nav a { font-size: 14px; }
+  .site-nav .nav-cta { margin: 6px 0 0; font-size: 12px; }
+  .hero { padding-top: 100px; }
+  .hero h1.hero-welcome { font-size: clamp(48px, 14vw, 68px); }
+  .hero-text { font-size: 16px; line-height: 1.7; }
+  .hero-social-links { display: grid; grid-template-columns: 1fr; width: min(100%, 310px); }
+  .hero-social-links a { font-size: 13px; }
+  .hero-visual { min-height: 450px; }
+  .about .section-photo-card { width: min(100%, 350px); height: 500px; }
+  .about-copy h2, .authority h2, .projects h2, .partnership-copy h2, .contact h2 { font-size: clamp(43px, 12.3vw, 56px); }
+  .about-copy > p:not(.eyebrow), .authority-heading > p:not(.eyebrow), .partnership-copy > p:not(.eyebrow), .project-card p { font-size: 16px; }
+  .mini-stats strong { font-size: 16px; }
+  .mini-stats span, .medal-row span, .certificate-card span { font-size: 11px; }
+  .panel-top { font-size: 11px; }
+  .medal-row strong, .certificate-card strong { font-size: 15px; }
+  .contact-email { font-size: 20px; }
+  .contact-bottom { grid-template-columns: 1fr; gap: 24px; margin-top: 58px; }
+  .footer-social-links { gap: 13px; }
+  .footer-social-links a { font-size: 12px; }
+}
+
+@media (max-width: 430px) {
+  .section { padding-left: 20px; padding-right: 20px; }
+  .eyebrow { font-size: 10px; letter-spacing: .13em; }
+  .hero h1.hero-welcome { font-size: clamp(46px, 13.5vw, 57px); }
+  .partnership-copy h2 { font-size: clamp(48px, 14.4vw, 60px); }
+  .button { font-size: 12px; }
+}
+

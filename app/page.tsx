@@ -2,19 +2,17 @@
 
 import { useEffect, useState } from 'react';
 import {
-  ArrowDownRight,
   ArrowUpRight,
-  AtSign,
   BookOpenCheck,
   ChevronUp,
   CirclePlay,
-  MapPin,
   Medal,
   Menu,
+  Camera,
+  Music2,
   Package,
   Sparkles,
-  Target,
-  Trophy,
+  SquarePlay,
   X,
 } from 'lucide-react';
 
@@ -39,6 +37,12 @@ const medals = [
 const certificates = [
   { title: 'Faixa Marrom', detail: 'Certificado de graduação · 2025', image: '/certificado-faixa-marrom.png' },
   { title: 'Curso Shotyugueiko', detail: 'São Carlos · 2026', image: '/certificado-shotyugueiko.png' },
+];
+
+const socialNetworks = [
+  { label: 'Instagram', handle: '@pgozettojudo', href: 'https://www.instagram.com/pgozettojudo/', icon: Camera },
+  { label: 'TikTok', handle: '@pgozettojudo', href: 'https://www.tiktok.com/@pgozettojudo', icon: Music2 },
+  { label: 'YouTube', handle: '@pgozettojudo', href: 'https://www.youtube.com/@pgozettojudo', icon: SquarePlay },
 ];
 
 export default function Home() {
@@ -98,12 +102,10 @@ export default function Home() {
   return (
     <main>
       <header className="site-header">
-        <a className="brand" href="#inicio" aria-label="Pedro Gozetto, início"><span>PG</span><small>JUDÔ</small></a>
         <nav className={menuOpen ? 'site-nav is-open' : 'site-nav'} aria-label="Navegação principal">
           {navItems.map(([label, href]) => <a key={href} href={href} onClick={closeMenu}>{label}</a>)}
-          <a className="nav-cta mobile-only" href="#contato" onClick={closeMenu}>Vamos conversar</a>
+          <a className="nav-cta" href="#contato" onClick={closeMenu}>Vamos conversar <ArrowUpRight size={15} /></a>
         </nav>
-        <a className="nav-cta desktop-only" href="#contato">Vamos conversar <ArrowUpRight size={15} /></a>
         <button className="menu-button" type="button" onClick={() => setMenuOpen((open) => !open)} aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'} aria-expanded={menuOpen}>
           {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
@@ -113,21 +115,14 @@ export default function Home() {
         <div className="hero-grid-lines parallax-layer" data-parallax="0.08" aria-hidden="true" />
         <div className="hero-orbit orbit-one parallax-layer" data-parallax="0.06" aria-hidden="true" /><div className="hero-orbit orbit-two parallax-layer" data-parallax="-0.04" aria-hidden="true" />
         <div className="hero-content reveal is-visible">
-          <p className="eyebrow"><span /> JUDOCA · ATLETA · CRIADOR</p>
           <h1 className="hero-welcome"><span>Seja Bem<br />Vindo! </span><strong>@pgozettojudo</strong><span><br />por aqui!</span></h1>
           <p className="hero-text">Conteúdo, rotina e a realidade de quem vive o judô dentro e fora do tatame.</p>
-          <div className="hero-actions"><a className="button button-primary" href="#sobre">Conheça minha jornada <ArrowDownRight size={17} /></a><a className="social-link" href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram"><AtSign size={17} /></a></div>
+          <div className="hero-social-links" aria-label="Redes sociais de Pedro Gozetto">{socialNetworks.map(({ label, handle, href, icon: Icon }) => <a href={href} key={label} target="_blank" rel="noreferrer" aria-label={`${label}: ${handle}`}><Icon size={18} /><span>{handle}</span></a>)}</div>
         </div>
         <div className="hero-visual reveal is-visible parallax-layer" data-parallax="0.035">
           <div className="image-glow" aria-hidden="true" />
           <div className="hero-photo-frame"><img src="/img1.jpg" alt="Pedro Gozetto ajustando a faixa de judô" /></div>
-          <div className="hero-photo-label"><span>EM MOVIMENTO</span><strong>JUDÔ<br />COM PROPÓSITO</strong></div>
-          <div className="floating-dot" aria-hidden="true" />
         </div>
-      </section>
-
-      <section className="signature-strip" aria-label="Identidade de Pedro Gozetto">
-        <span>DISCIPLINA</span><i /> <span>RESPEITO</span><i /> <span>EVOLUÇÃO</span><i /> <span>COMUNIDADE</span>
       </section>
 
       <section className="about section parallax-section" id="sobre">
@@ -143,7 +138,7 @@ export default function Home() {
       </section>
 
       <section className="authority section parallax-section" id="autoridade">
-        <div className="authority-orbit parallax-layer" data-parallax="0.07" aria-hidden="true" /><div className="judo-icon icon-authority parallax-layer" data-parallax="-0.03" aria-hidden="true"><Trophy size={28} /></div>
+        <div className="authority-orbit parallax-layer" data-parallax="0.07" aria-hidden="true" />
         <div className="authority-heading reveal"><p className="eyebrow"><span /> 02 / AUTORIDADE</p><h2>CONQUISTAS QUE<br /><em>CONTAM MINHA HISTÓRIA.</em></h2><p>Um espaço para registrar cada medalha, resultado e certificado que constrói minha trajetória no judô.</p></div>
         <div className="authority-grid">
           <article className="medal-panel reveal"><div className="panel-top"><Medal size={23} /><span>MEDALHAS E CONQUISTAS</span></div>{medals.map(({ title, detail, emoji }, index) => <div className="medal-row" key={title}><b>0{index + 1}</b><div><strong>{emoji} {title}</strong><span>{detail}</span></div><span className="medal-emoji" aria-hidden="true">{emoji}</span></div>)}</article>
@@ -158,15 +153,15 @@ export default function Home() {
       </section>
 
       <section className="partnerships section parallax-section" id="parcerias">
-        <div className="section-texture parallax-layer" data-parallax="0.05" aria-hidden="true" /><div className="judo-icon icon-partnership parallax-layer" data-parallax="-0.04" aria-hidden="true"><Medal size={27} /></div>
-        <div className="partnership-image reveal"><img src="/img3.jpg" alt="Pedro Gozetto em uma atividade de judô com a comunidade" /><div className="image-tag"><Target size={17} /> IMPACTO FORA DO TATAME</div></div>
+        <div className="section-texture parallax-layer" data-parallax="0.05" aria-hidden="true" />
+        <div className="partnership-image reveal"><img src="/img3.jpg" alt="Pedro Gozetto em uma atividade de judô com a comunidade" /></div>
         <div className="partnership-copy reveal"><p className="eyebrow"><span /> 04 / PARCERIAS</p><h2>VAMOS CRIAR<br /><em>JUNTOS?</em></h2><p>Estou aberto a marcas e projetos que compartilham os valores do judô: disciplina, respeito, evolução e comunidade.</p><a className="button button-outline" href="mailto:pedro@gozetto.com.br">Falar sobre uma parceria <ArrowUpRight size={17} /></a></div>
       </section>
 
       <section className="contact parallax-section" id="contato">
         <div className="contact-orb parallax-layer" data-parallax="0.07" aria-hidden="true" /><div className="judo-glyph glyph-contact parallax-layer" data-parallax="-0.04" aria-hidden="true">柔道</div>
         <div className="contact-content reveal"><p className="eyebrow"><span /> VAMOS NOS CONECTAR</p><h2>O PRÓXIMO PASSO<br />COMEÇA <em>AGORA.</em></h2><a className="contact-email" href="mailto:pedro@gozetto.com.br">pedro@gozetto.com.br <ArrowUpRight size={24} /></a></div>
-        <div className="contact-bottom"><a href="#inicio" className="brand"><span>PG</span><small>JUDÔ</small></a><div><MapPin size={15} /> Brasil</div><a href="https://instagram.com" target="_blank" rel="noreferrer"><AtSign size={16} /> Instagram</a><a href="#inicio" className="back-top">Voltar ao topo <ChevronUp size={16} /></a></div>
+        <div className="contact-bottom"><div className="footer-social-links">{socialNetworks.map(({ label, handle, href, icon: Icon }) => <a href={href} key={label} target="_blank" rel="noreferrer"><Icon size={17} /><span>{handle}</span></a>)}</div><a href="#inicio" className="back-top">Voltar ao topo <ChevronUp size={16} /></a></div>
       </section>
 
       {activeCertificate && <div className={certificateClosing ? 'certificate-modal is-closing' : 'certificate-modal'} role="dialog" aria-modal="true" aria-label={`Visualização ampliada: ${activeCertificate.title}`} onClick={(event) => event.currentTarget === event.target && closeCertificate()}><div className="certificate-modal-card"><button className="certificate-close" type="button" onClick={closeCertificate} aria-label="Fechar certificado"><X size={22} /></button><div className="certificate-modal-title"><BookOpenCheck size={19} /><span>{activeCertificate.title}</span></div><img src={activeCertificate.image} alt={`Visualização ampliada do certificado de ${activeCertificate.title} de Pedro Gozetto`} /></div></div>}
